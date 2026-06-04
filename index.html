@@ -1,0 +1,1044 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Frontier Signals // Intelligence from the Edge</title>
+  <meta name="description" content="A private intelligence network for frontier builders, allocators, and deal-makers. Weekly signals on AI, private equity, deep tech, and the infrastructure defining the next cycle." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    /* ─── DESIGN SYSTEM ───────────────────────────────────────────
+       Editorial Intelligence — Bloomberg meets The Economist
+       Background: #F2F2EF warm newsprint
+       Primary: #0A0A0A near-black
+       Accent: #1A56FF electric institutional blue
+       Muted: #6B6B6B secondary text
+       Headlines: Space Grotesk 700
+       Body: Inter 400
+       Labels: Space Mono uppercase
+    ─────────────────────────────────────────────────────────────── */
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0A0A0A;
+      --ink: #F0F0EC;
+      --muted: #888880;
+      --accent: #1A56FF;
+      --accent-hover: #3A6FFF;
+      --rule: #1E1E1A;
+      --card-bg: #111110;
+      --white: #F0F0EC;
+      --font-head: 'Space Grotesk', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --font-mono: 'Space Mono', monospace;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--font-body);
+      font-size: 15px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ─── TICKER BAR ─── */
+    .ticker-bar {
+      background: var(--ink);
+      color: #888;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      padding: 6px 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .ticker-bar span { color: #555; }
+    .ticker-bar .ticker-live { color: #1A56FF; }
+
+    /* ─── NAV ─── */
+    nav {
+      border-bottom: 1px solid var(--rule);
+      padding: 0 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 56px;
+      background: var(--bg);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-head);
+      font-weight: 700;
+      font-size: 15px;
+      letter-spacing: -0.01em;
+    }
+
+    .nav-logo-icon {
+      width: 28px;
+      height: 28px;
+      background: var(--accent);
+      color: var(--white);
+      font-family: var(--font-head);
+      font-weight: 700;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 4px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      transition: color 0.15s;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: var(--ink);
+      transition: width 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--ink); text-decoration: none; }
+    .nav-links a:hover::after { width: 100%; }
+
+    /* ─── HERO ─── */
+    .hero {
+      border-bottom: 1px solid var(--rule);
+      padding: 64px 32px 56px;
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: 64px;
+      align-items: start;
+    }
+
+    .hero-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      display: inline-block;
+      width: 24px;
+      height: 2px;
+      background: var(--accent);
+    }
+
+    .hero h1 {
+      font-family: var(--font-head);
+      font-weight: 700;
+      font-size: clamp(40px, 5vw, 64px);
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      color: var(--ink);
+      margin-bottom: 20px;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .hero-sub {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.65;
+      max-width: 480px;
+      margin-bottom: 28px;
+    }
+
+    .hero-meta {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #AAAAAA;
+    }
+
+    /* ─── SIGNUP CARD ─── */
+    .signup-card {
+      background: var(--white);
+      border: 1px solid var(--rule);
+      padding: 32px;
+    }
+
+    .signup-card-label {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    .signup-card h2 {
+      font-family: var(--font-head);
+      font-weight: 700;
+      font-size: 26px;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 6px;
+    }
+
+    .signup-card h2 em {
+      font-style: italic;
+      font-weight: 400;
+    }
+
+    .signup-card-desc {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.55;
+      margin-bottom: 20px;
+    }
+
+    .signup-form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .signup-form input {
+      width: 100%;
+      padding: 11px 14px;
+      border: 1px solid var(--rule);
+      background: var(--bg);
+      font-family: var(--font-body);
+      font-size: 14px;
+      color: var(--ink);
+      outline: none;
+      transition: border-color 0.15s;
+    }
+
+    .signup-form input:focus { border-color: var(--accent); }
+    .signup-form input::placeholder { color: #AAAAAA; }
+
+    .btn-primary {
+      width: 100%;
+      padding: 12px 20px;
+      background: var(--accent);
+      color: var(--white);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .btn-primary:hover { background: var(--accent-hover); }
+
+    .signup-disclaimer {
+      font-size: 10px;
+      color: #AAAAAA;
+      margin-top: 8px;
+      font-family: var(--font-mono);
+      letter-spacing: 0.04em;
+    }
+
+    /* ─── SECTION WRAPPER ─── */
+    .section {
+      border-bottom: 1px solid var(--rule);
+      padding: 56px 32px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 40px;
+      gap: 24px;
+    }
+
+    .section-label {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    .section-label::before {
+      content: '§ ';
+      color: var(--accent);
+    }
+
+    .section h2 {
+      font-family: var(--font-head);
+      font-weight: 700;
+      font-size: clamp(28px, 3.5vw, 48px);
+      line-height: 1.1;
+      letter-spacing: -0.025em;
+    }
+
+    .section h2 em {
+      font-style: italic;
+      font-weight: 400;
+      color: var(--accent);
+    }
+
+    .section-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 10px 18px;
+      border: 1px solid var(--ink);
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink);
+      white-space: nowrap;
+      transition: background 0.15s, color 0.15s;
+      flex-shrink: 0;
+      align-self: flex-end;
+    }
+
+    .section-cta:hover { background: var(--ink); color: var(--white); text-decoration: none; }
+
+    /* ─── PENDING CARD ─── */
+    .pending-card {
+      border: 1px solid var(--rule);
+      padding: 56px 32px;
+      text-align: center;
+    }
+
+    .pending-tag {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      border: 1px solid var(--rule);
+      padding: 4px 10px;
+      margin-bottom: 16px;
+    }
+
+    .pending-card h3 {
+      font-family: var(--font-head);
+      font-weight: 700;
+      font-size: 28px;
+      letter-spacing: -0.02em;
+      margin-bottom: 10px;
+    }
+
+    .pending-card h3 em {
+      font-style: italic;
+      font-weight: 400;
+      color: var(--accent);
+    }
+
+    .pending-card p {
+      font-size: 13px;
+      color: var(--muted);
+      max-width: 400px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* ─── PODCAST CARD ─── */
+    .podcast-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--rule);
+      border: 1px solid var(--rule);
+    }
+
+    .podcast-content {
+      background: var(--bg);
+      padding: 32px;
+    }
+
+    .podcast-content .pending-tag { margin-bottom: 12px; }
+
+    .podcast-content h3 {
+      font-family: var(--font-head);
+      font-weight: 700;
+      font-size: 22px;
+      letter-spacing: -0.02em;
+      margin-bottom: 10px;
+      line-height: 1.2;
+    }
+
+    .podcast-content h3 em { font-style: italic; font-weight: 400; color: var(--accent); }
+
+    .podcast-content p {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 10px 18px;
+      border: 1px solid var(--ink);
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink);
+      background: transparent;
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s;
+    }
+
+    .btn-outline:hover { background: var(--ink); color: var(--white); text-decoration: none; }
+
+    .podcast-visual {
+      background: var(--ink);
+      min-height: 240px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .podcast-visual-text {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #333;
+      position: absolute;
+      bottom: 16px;
+      right: 16px;
+    }
+
+    .podcast-globe {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      border: 1px solid #222;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .podcast-globe::before {
+      content: '';
+      position: absolute;
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      border: 1px solid #1A56FF33;
+    }
+
+    .podcast-globe-inner {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: #1A56FF22;
+      border: 1px solid #1A56FF55;
+    }
+
+    /* ─── TELEGRAM CARD ─── */
+    .telegram-section {
+      background: var(--ink);
+      color: var(--white);
+      border-bottom: 1px solid #1A1A1A;
+      padding: 56px 32px;
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: 64px;
+      align-items: center;
+    }
+
+    .telegram-section .section-label { color: #555; }
+    .telegram-section .section-label::before { color: #1A56FF; }
+
+    .telegram-section h2 {
+      font-family: var(--font-head);
+      font-weight: 700;
+      font-size: clamp(28px, 3.5vw, 44px);
+      line-height: 1.1;
+      letter-spacing: -0.025em;
+      color: var(--white);
+      margin-top: 8px;
+    }
+
+    .telegram-section h2 em {
+      font-style: italic;
+      font-weight: 400;
+      color: #1A56FF;
+    }
+
+    .telegram-section p {
+      font-size: 14px;
+      color: #888;
+      line-height: 1.65;
+      margin-top: 16px;
+      max-width: 480px;
+    }
+
+    .telegram-card {
+      background: #111;
+      border: 1px solid #222;
+      padding: 32px;
+    }
+
+    .telegram-card-label {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #555;
+      margin-bottom: 12px;
+    }
+
+    .telegram-card h3 {
+      font-family: var(--font-head);
+      font-weight: 700;
+      font-size: 20px;
+      letter-spacing: -0.02em;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+
+    .telegram-card p {
+      font-size: 13px;
+      color: #666;
+      line-height: 1.55;
+      margin-bottom: 20px;
+    }
+
+    .btn-telegram {
+      width: 100%;
+      padding: 12px 20px;
+      background: #1A56FF;
+      color: var(--white);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      text-decoration: none;
+    }
+
+    .btn-telegram:hover { background: #0F3FCC; text-decoration: none; }
+
+    .telegram-access-note {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.04em;
+      color: #444;
+      margin-top: 10px;
+      text-align: center;
+    }
+
+    /* ─── SECTORS GRID ─── */
+    .sectors-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--rule);
+      border: 1px solid var(--rule);
+      margin-top: 0;
+    }
+
+    .sector-card {
+      background: var(--bg);
+      padding: 28px 24px 24px;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.15s;
+      min-height: 160px;
+    }
+
+    .sector-card:hover { background: var(--card-bg); }
+
+    .sector-watermark {
+      position: absolute;
+      top: -10px;
+      right: 8px;
+      font-family: var(--font-head);
+      font-weight: 700;
+      font-size: 88px;
+      color: var(--rule);
+      line-height: 1;
+      pointer-events: none;
+      transition: color 0.15s, transform 0.2s;
+      user-select: none;
+    }
+
+    .sector-card:hover .sector-watermark {
+      color: #C8C8C0;
+      transform: translateY(-4px);
+    }
+
+    .sector-num {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    .sector-card h3 {
+      font-family: var(--font-head);
+      font-weight: 700;
+      font-size: 18px;
+      letter-spacing: -0.01em;
+      margin-bottom: 6px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .sector-card p {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.5;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ─── ABOUT STRIP ─── */
+    .about-strip {
+      padding: 56px 32px;
+      border-bottom: 1px solid var(--rule);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+
+    .about-strip h2 {
+      font-family: var(--font-head);
+      font-weight: 700;
+      font-size: clamp(24px, 3vw, 36px);
+      letter-spacing: -0.025em;
+      line-height: 1.15;
+      margin-top: 10px;
+    }
+
+    .about-strip p {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 16px;
+    }
+
+    .about-strip p strong { color: var(--ink); font-weight: 600; }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--ink);
+      color: #555;
+      padding: 32px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-head);
+      font-weight: 700;
+      font-size: 14px;
+      color: var(--white);
+      margin-bottom: 6px;
+    }
+
+    .footer-logo-icon {
+      width: 24px;
+      height: 24px;
+      background: var(--accent);
+      color: var(--white);
+      font-family: var(--font-head);
+      font-weight: 700;
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 3px;
+    }
+
+    .footer-tagline {
+      font-size: 12px;
+      color: #444;
+      line-height: 1.5;
+      max-width: 360px;
+    }
+
+    .footer-right {
+      text-align: right;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 20px;
+      list-style: none;
+      font-family: var(--font-mono);
+      font-size: 9px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+      justify-content: flex-end;
+    }
+
+    .footer-links a { color: #444; transition: color 0.15s; }
+    .footer-links a:hover { color: var(--white); text-decoration: none; }
+
+    .footer-copy {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      letter-spacing: 0.06em;
+      color: #333;
+    }
+
+    .footer-powered {
+      grid-column: 1 / -1;
+      border-top: 1px solid #1A1A1A;
+      padding-top: 20px;
+      margin-top: 8px;
+      font-family: var(--font-mono);
+      font-size: 9px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #333;
+      text-align: center;
+    }
+
+    .footer-powered a { color: #444; transition: color 0.15s; }
+    .footer-powered a:hover { color: var(--white); text-decoration: none; }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 768px) {
+      .ticker-bar { padding: 6px 16px; }
+      nav { padding: 0 16px; }
+      .nav-links { gap: 16px; }
+      .hero { grid-template-columns: 1fr; gap: 40px; padding: 40px 16px; }
+      .signup-card { padding: 24px; }
+      .section { padding: 40px 16px; }
+      .section-header { flex-direction: column; }
+      .podcast-grid { grid-template-columns: 1fr; }
+      .telegram-section { grid-template-columns: 1fr; gap: 40px; padding: 40px 16px; }
+      .sectors-grid { grid-template-columns: 1fr 1fr; }
+      .about-strip { grid-template-columns: 1fr; gap: 32px; padding: 40px 16px; }
+      footer { grid-template-columns: 1fr; padding: 24px 16px; }
+      .footer-right { text-align: left; }
+      .footer-links { justify-content: flex-start; }
+    }
+
+    @media (max-width: 480px) {
+      .sectors-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TICKER BAR -->
+  <div class="ticker-bar">
+    <span>26.2041° S, 28.0473° E</span>
+    <span class="ticker-live">● THE FRONTIER SYNDICATE · LIVE</span>
+    <span>74.0060° W</span>
+  </div>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-logo">
+      <div class="nav-logo-icon">F</div>
+      <span>The Frontier Syndicate</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#newsletter">Newsletter</a></li>
+      <li><a href="#intelligence">Intelligence</a></li>
+      <li><a href="#network">Network</a></li>
+      <li><a href="#sectors">Sectors</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-left">
+      <div class="hero-eyebrow">F/01 — By invitation. At the frontier.</div>
+      <h1>The Frontier //<br /><em>Syndicate.</em></h1>
+      <p class="hero-sub">
+        A private intelligence syndicate for frontier builders, allocators, and deal-makers.
+        Weekly signals on AI systems, private equity, deep tech, and the infrastructure
+        defining the next cycle. Written for the few who will build it.
+      </p>
+      <p class="hero-meta">Powered by Selfbuiltsystems &amp; LNCLOT Intelligence</p>
+    </div>
+    <div class="hero-right">
+      <div class="signup-card" id="newsletter">
+        <div class="signup-card-label">[Step 01] Subscribe</div>
+        <h2>Join the <em>Syndicate.</em></h2>
+        <p class="signup-card-desc">
+          A once-a-week intelligence brief on the companies, capital, and
+          technical bets shaping the next decade. No filler. No noise.
+        </p>
+        <form class="signup-form" onsubmit="handleSignup(event)">
+          <input type="email" placeholder="you@firm.email" required />
+          <button type="submit" class="btn-primary">
+            Join the Syndicate →
+          </button>
+        </form>
+        <p class="signup-disclaimer">Unsubscribe anytime. No spam.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER SECTION -->
+  <section class="section">
+    <div class="section-header">
+      <div>
+        <div class="section-label">Newsletter</div>
+        <h2>Weekly <em>intelligence</em> from the frontier.</h2>
+      </div>
+      <a href="#newsletter" class="section-cta">Join the Syndicate →</a>
+    </div>
+    <div class="pending-card">
+      <div class="pending-tag">[STATUS · ACTIVE]</div>
+      <h3>The Frontier Syndicate. <em>Weekly.</em></h3>
+      <p>
+        Intelligence on the companies, capital, and technical bets shaping the next decade.
+        AI systems, private equity deal flow, sovereign infrastructure, and the operators
+        building at the intersection. Subscribe to get each dispatch first.
+      </p>
+    </div>
+  </section>
+
+  <!-- TELEGRAM / NETWORK SECTION -->
+  <section class="telegram-section" id="network">
+    <div>
+      <div class="section-label" style="color:#555;">§ Network</div>
+      <h2>The <em>private syndicate.</em><br />By invitation only.</h2>
+      <p>
+        A curated Telegram group for frontier operators, allocators, and deal-makers.
+        High-signal drops only. Access is vetted. This is not a public channel.
+        Inside: deal flow, intelligence dispatches, introductions, and the conversations
+        that do not happen in public.
+      </p>
+      <p style="margin-top:12px; font-family: var(--font-mono); font-size:11px; letter-spacing:0.06em; color:#444; text-transform:uppercase;">
+        Bankers · Financiers · Crypto Allocators · Hedge Funds · PE Operators · Founders
+      </p>
+    </div>
+    <div>
+      <div class="telegram-card">
+        <div class="telegram-card-label">[Access · Vetted]</div>
+        <h3>Request Access</h3>
+        <p>
+          The group operates at the level of the people inside it.
+          Entry is by application. Minimum criteria apply.
+        </p>
+        <a href="https://t.me/frontiersignals" target="_blank" rel="noopener noreferrer" class="btn-telegram">
+          Request Access via Telegram →
+        </a>
+        <p class="telegram-access-note">Vetted entry · No bots · No noise</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTELLIGENCE / PODCAST SECTION -->
+  <section class="section" id="intelligence">
+    <div class="section-header">
+      <div>
+        <div class="section-label">Intelligence</div>
+        <h2>Long-form <em>conversations.</em></h2>
+      </div>
+      <a href="#" class="section-cta">⊙ Subscribe</a>
+    </div>
+    <div class="podcast-grid">
+      <div class="podcast-content">
+        <div class="pending-tag">[TRANSMISSION · PENDING]</div>
+        <h3>The channel <em>launches soon.</em></h3>
+        <p>
+          Deep conversations with the operators, allocators, and builders
+          working at the intersection of AI systems, private equity, and
+          sovereign infrastructure. Subscribe on YouTube to catch the first
+          transmission the moment it drops.
+        </p>
+        <a href="#" class="btn-outline">⊙ Subscribe on YouTube</a>
+      </div>
+      <div class="podcast-visual">
+        <div class="podcast-globe">
+          <div class="podcast-globe-inner"></div>
+        </div>
+        <span class="podcast-visual-text">@FRONTIERSIGNALS</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTORS GRID -->
+  <section class="section" id="sectors">
+    <div class="section-header">
+      <div>
+        <div class="section-label">Where we focus</div>
+        <h2>Six active <em>sectors.</em></h2>
+      </div>
+      <span style="font-family:var(--font-mono);font-size:9px;letter-spacing:0.1em;color:var(--muted);text-transform:uppercase;align-self:flex-end;">[06 / 01]</span>
+    </div>
+    <div class="sectors-grid">
+      <div class="sector-card">
+        <div class="sector-watermark">S</div>
+        <div class="sector-num">[S.01]</div>
+        <h3>AI Systems</h3>
+        <p>Sovereign AI, proprietary data, model deployment, intelligence products, and advisory systems for enterprises and founder-led firms.</p>
+      </div>
+      <div class="sector-card">
+        <div class="sector-watermark">R</div>
+        <div class="sector-num">[S.02]</div>
+        <h3>Private Equity</h3>
+        <p>Deal origination, M&amp;A advisory, acquisition strategy, and the capital layer that funds the next infrastructure cycle.</p>
+      </div>
+      <div class="sector-card">
+        <div class="sector-watermark">E</div>
+        <div class="sector-num">[S.03]</div>
+        <h3>Infrastructure</h3>
+        <p>Sovereign infrastructure deployments, energy systems, data centre architecture, and the physical layer of the next cycle.</p>
+      </div>
+      <div class="sector-card">
+        <div class="sector-watermark">D</div>
+        <div class="sector-num">[S.04]</div>
+        <h3>Deep Tech</h3>
+        <p>Quantum, next-generation silicon, photonic compute, robotics, and the technical bets that compound over a decade.</p>
+      </div>
+      <div class="sector-card">
+        <div class="sector-watermark">Q</div>
+        <div class="sector-num">[S.05]</div>
+        <h3>Deal Networks</h3>
+        <p>High-end deal-making networks, co-investment vehicles, LP relationships, and the rooms where capital meets operators.</p>
+      </div>
+      <div class="sector-card">
+        <div class="sector-watermark">X</div>
+        <div class="sector-num">[S.06]</div>
+        <h3>Frontier X</h3>
+        <p>Longevity, collectibles, emerging markets, and the categories that sit at the edge of what institutional capital has priced in.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT STRIP -->
+  <section class="about-strip">
+    <div>
+      <div class="section-label">§ About</div>
+      <h2>A private syndicate for frontier builders and backers.</h2>
+    </div>
+    <div>
+      <p>
+        <strong>The Frontier Syndicate</strong> is a private intelligence syndicate connecting investors,
+        founders, and operators around the companies and deals defining the next era.
+        Powered by Selfbuiltsystems and LNCLOT Intelligence.
+      </p>
+      <p>
+        We operate at the intersection of AI systems, private equity deal-making, and
+        sovereign infrastructure. The network is curated. Entry is vetted.
+        The intelligence is built for operators who are already in the room.
+      </p>
+      <p>
+        Jean-Jacques and the Selfbuiltsystems team have been in the room at G20 Trade Finance
+        working groups, C20 South Africa summits, Huawei Enterprise Intelligence boardrooms,
+        and private equity deal tables across three continents. This is not theory. This is
+        the intelligence layer from inside the deals.
+      </p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div>
+      <div class="footer-logo">
+        <div class="footer-logo-icon">F</div>
+        <span>The Frontier Syndicate</span>
+      </div>
+      <p class="footer-tagline">
+        A private syndicate for frontier builders and backers — connecting investors,
+        founders, and operators around the companies defining the next era.
+      </p>
+    </div>
+    <div class="footer-right">
+      <ul class="footer-links">
+        <li><a href="#newsletter">Newsletter</a></li>
+        <li><a href="#network">Network</a></li>
+        <li><a href="#sectors">Sectors</a></li>
+      </ul>
+      <p class="footer-copy">© 2026 · LNCLOT Intelligence</p>
+    </div>
+    <div class="footer-powered">
+      Powered by <a href="https://selfbuiltsystems.com" target="_blank" rel="noopener noreferrer">Selfbuiltsystems</a>
+      &amp;
+      <a href="https://frontier.m1c.vc" target="_blank" rel="noopener noreferrer">LNCLOT Intelligence</a>
+    </div>
+  </footer>
+
+  <script>
+    function handleSignup(e) {
+      e.preventDefault();
+      const input = e.target.querySelector('input[type="email"]');
+      const btn = e.target.querySelector('button');
+      const email = input.value;
+      btn.textContent = 'Subscribed ✓';
+      btn.style.background = '#0A8A3A';
+      input.value = '';
+      input.placeholder = 'You are on the list.';
+      setTimeout(() => {
+        btn.textContent = 'Join the Newsletter →';
+        btn.style.background = '';
+        input.placeholder = 'you@firm.email';
+      }, 4000);
+    }
+  </script>
+
+</body>
+</html>
